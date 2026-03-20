@@ -4,5 +4,5 @@ gemspec
 
 gem 'rails'
 
-gem 'rails_com', github: 'work-design/rails_com'
-gem 'rails_notice', github: 'work-design/rails_notice'
+gem 'rails_com', path: '../rails_com'
+gem 'rails_notice', path: '../rails_notice'
