@@ -1,0 +1,8 @@
+Interact::Attitude:
+  default:
+    only: ['opinion', 'attitudinal_type']
+    methods: ['user_name', 'attitudinal_type_i18n']
+Interact::Comment:
+  default:
+    only: ['content']
+    methods: ['user_name']

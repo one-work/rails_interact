@@ -5,6 +5,13 @@ module Interact
     included do
       attribute :opinion, :string
 
+      enum :opinion, {
+        liked: 'liked',
+        disliked: 'disliked',
+        like_canceled: 'like_canceled',
+        dislike_canceled: 'dislike_canceled'
+      }
+
       belongs_to :user
       belongs_to :attitudinal, polymorphic: true
 
@@ -12,18 +19,6 @@ module Interact
       after_save_commit :sync_to_notification, if: -> { saved_change_to_opinion? && liked? }
 
       delegate :name, to: :user, prefix: true
-
-      enum :opinion, {
-        liked: 'liked',
-        disliked: 'disliked',
-        like_canceled: 'like_canceled',
-        dislike_canceled: 'dislike_canceled'
-      }
-      acts_as_notify(
-        :default,
-        only: [:opinion, :attitudinal_type],
-        methods: [:user_name, :attitudinal_type_i18n]
-      )
     end
 
     def update_attitudinal_counter
@@ -58,7 +53,7 @@ module Interact
 
     def sync_to_notification
       to_notification(
-        receiver: self.attitudinal.user,
+        user: self.attitudinal.user,
         sender: self.user,
         linked: self.attitudinal,
         verbose: true
