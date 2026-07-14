@@ -55,8 +55,7 @@ module Interact
       to_notification(
         user: self.attitudinal.user,
         sender: self.user,
-        linked: self.attitudinal,
-        verbose: true
+        linked: self.attitudinal
       )
     end
 

@@ -36,8 +36,7 @@ module Interact
       to_notification(
         receiver: self.commentable.user,
         sender: self.user,
-        linked: self.commentable,
-        verbose: true
+        linked: self.commentable
       )
     end
 
