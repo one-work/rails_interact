@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Rails.app.routes.draw do
   scope module: 'interact' do
     scope ':commentable_type/:commentable_id' do
       resources :comments, only: [:index, :show, :create, :update, :destroy]
